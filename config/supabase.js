@@ -8,7 +8,7 @@ const supabaseKey = process.env.SUPABASE_KEY;
 
 //VARIABLES DE CONEXION
 if (!supabaseUrl || !supabaseKey) {
-    console.error("❌ Error: La variables de entorno SUPABASE_URL y SUPABASE_KEY son requeridas");
+    console.error("❌ Error: La variables de entorno SUPABASE_URL y SUPABASE_KEY som requeridas");
 }
 
 //CONEXION A SUPABASE
@@ -16,4 +16,4 @@ export const supabase = createClient(supabaseUrl, supabaseKey);
 
 export const conectaDB=()=>{
     console.log("✅ Conexion a supabase establecida correctamente");
-}
+};

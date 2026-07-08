@@ -1,11 +1,18 @@
-import express, { Router } from "express";
-import {getUsuarios, getusuariosPorId, putactualizarUsuario, deleliminarUsuario} from "../controllers/User.js";
+import express from "express";
+import { getUsuarioporId, getUsuarios, putUsuarioporId, deleteUsuario} from "../controllers/User.js";
 
 const router = express.Router();
 
+//ruta para obtener los usuarios 
 router.get('/', getUsuarios);
-router.get('/:id', getusuariosPorId);
-router.put('/actualizar/:id', putactualizarUsuario);
-router.delete('/eliminar/:id', deleliminarUsuario);
+
+//ruta para obtener un usuario por id
+router.get('/:id', getUsuarioporId);
+
+//ruta para actualizar un usuario por id
+router.put('/actualizar:id', putUsuarioporId);
+
+//ruta para eliminar usuario por id
+router.delete('/eliminar:id', deleteUsuario);
 
 export default router;
