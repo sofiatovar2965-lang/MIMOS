@@ -34,12 +34,20 @@ export const obtenerPorCat = async (req, res) => {
 
   };
 
+
+
 export const crear = async (req, res) => {
   try {
-    const { nombre, descripcion, precio, stock, imagen_url, categoria, sabor } =
+    const { nombre, descripcion, precio, stock, categoria, sabor } =
 req.body;
+
+    //claudinary almacena
+    const imagen_url = req.file ? req.file.path : null;
+
+
     if (!nombre || !precio || !imagen_url) {
-      return res.status(400).json({ error: 'nombre, precio e imagen_url requeridos' });
+      return res.status(400).json({ 
+        error: 'nombre, precio e imagen_url requeridos' });
     }
     const { data, error } = await crearHelado({
       nombre, descripcion, precio, stock, imagen_url, categoria, sabor
@@ -50,6 +58,8 @@ req.body;
     return res.status(500).json({ error: error.message });
   }
 };
+
+
 
 export const editar = async (req, res) => {
   try {

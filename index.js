@@ -32,6 +32,16 @@ app.use('/usuarios', UserRoutes);
 app.use('/api', heladosRoutes);
 app.use('/pedi', pedidosRoutes);
 
+app.use((err, req, res, next) => {
+    console.error('ERROR COMPLETO:', err);
+
+    res.status(err.status || 500).json({
+        error: err.message || 'Error interno del servidor',
+        nombre: err.name,
+        detalles: err
+    });
+});
+
 
 //CONFIGURAMOS EL PUERTO 
 
