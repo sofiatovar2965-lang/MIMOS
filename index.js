@@ -5,16 +5,18 @@ import AuthRoutes from "./routes/Auth.js";
 import UserRoutes from "./routes/User.js";
 import heladosRoutes from "./routes/helados.js";
 import pedidosRoutes from "./routes/pedidos.js";
+import cors from 'cors';
 
 //CARGAR VARIABLES
 dotev.config();
 
 //CREAMOS LA APLICACION DE EXPRESS
+
 const app = express();
 
 //LEER EL JSON
 app.use(express.json());
-
+app.use(cors());
 //CREAMOS LA RUTA
 app.get('/',(req,res)=>{
     res.json({
