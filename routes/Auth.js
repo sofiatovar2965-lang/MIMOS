@@ -19,3 +19,4 @@ router.post('/verify-code', verifyCode);
 router.post("/google", autenticarConGoogle);
 
 export default router;
+ 
