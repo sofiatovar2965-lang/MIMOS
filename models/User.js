@@ -26,7 +26,7 @@ export const obtenerPorEmail= async(email)=>{
     .from("usuarios")
     .select("*")
     .eq ('email', email)
-    .single();
+    .maybeSingle();
     return{data,error};
 };
 
@@ -62,4 +62,25 @@ export const eliminarUsuario = async (id) => {
 
    
 
+
+// 2. Función específica para los usuarios autenticados con Google
+export const crearUsuarioGoogle = async ({ nombre, email, googleId, avatar = null, rol = 'cliente' }) => {
+    const { data, error } = await supabase
+        .from('usuarios')
+        .insert({
+            nombre,
+            email,
+            contrasena: null,        // No requiere contraseña
+            rol,
+            isVerified: true,      // Google ya validó este correo
+            googleId,
+            avatar,
+            codigoVerificacion: null,
+            codigoVerificacionExpiracion: null
+        })
+        .select('id, nombre, email, rol, avatar')
+        .single();
+
+    return { data, error };
+};
 
